@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+build_dir=$1
 
 indent() {
   sed -u 's/^/       /'
@@ -20,8 +21,8 @@ while read url; do
     echo Vendoring $url | indent
     curl -L --silent $url | tar xz
     echo Adding Path | indent
-    mkdir -p /app/.profile.d
-    echo "export PATH=\"/app/vendor/node/bin:$PATH\";" 
-    #> /app/.profile.d/libpqxx.sh
+    mkdir -p $build_dir/.profile.d
+    echo "export PATH=\"$build_dir/vendor/node/bin:$PATH\";" 
+    #> $build_dir/.profile.d/libpqxx.sh
   fi
 done < .vendor_urls
