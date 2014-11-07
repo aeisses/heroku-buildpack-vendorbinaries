@@ -22,6 +22,6 @@ while read url; do
     curl -L --silent $url | tar xz
     echo Adding Path | indent
     mkdir -p $build_dir/.profile.d
-    echo "export PATH=\"$build_dir/vendor/node/bin:$PATH\";" > $build_dir/.profile.d/libpqxx.sh
+    echo "export PKG_CONFIG_PATH=\"$build_dir/vendor/node/bin:$PKG_CONFIG_PATH\";" > $build_dir/.profile.d/libpqxx.sh
   fi
 done < .vendor_urls
