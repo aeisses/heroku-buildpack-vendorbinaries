@@ -20,7 +20,7 @@ while read url; do
     echo Vendoring $url | indent
     curl -L --silent $url | tar xz
     echo Adding Path | indent
-    mkdir -p $build_dir/.profile.d
+    mkdir -p /app/.profile.d
     echo "export PATH=\"/app/vendor/node/bin:$PATH\";" > /app/.profile.d/libpqxx.sh
   fi
 done < .vendor_urls
